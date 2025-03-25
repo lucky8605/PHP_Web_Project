@@ -1,7 +1,7 @@
 <?php
 include "conn.php"; 
 include "head.php";
-include "nav.php";
+include "nav.php"; 
 ?>
 
 

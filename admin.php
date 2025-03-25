@@ -57,7 +57,7 @@ if (isset($_POST['username'])) {
 	$user=trim($_POST['username']);
 	$password=trim($_POST['password']);
 
- $query="SELECT * from login  where (email='".$user."' OR mobile='".$user."')AND password='".$password."'";
+    $query="SELECT * from login  where (email='".$user."' OR mobile='".$user."')AND password='".$password."'";
 	$conn=mysqli_connect('localhost','root','','a2z_web_project');
 	$q=mysqli_query($conn, $query);
 	$arr=mysqli_fetch_assoc($q);

@@ -334,6 +334,64 @@ if(isset($_GET['deleteid'])){
 
 
 
+<?php
+//  echo("<pre>");
+//  print_r($_POST);
+//  print_r($_FILES);
+
+ function image($name, $size, $temp, $path) {
+  $ext = explode(".", $name); // Split the filename to get the extension
+  $a = rand(1, 9999) . "document." . $ext[count($ext) - 1]; // Generate a unique filename
+  // Convert size to KB
+  $sizeInKB = $size / 1024;
+  // Upload the file
+  if (move_uploaded_file($temp, "$path" . $a)) {
+      echo "File uploaded successfully!<br>";
+      echo "File size: " . round($sizeInKB, 2) . " KB"; // Display file size in KB
+      return $a;
+  } else {
+      echo "File upload failed.";
+      return false;
+  }
+}
+
+
+if(isset($_POST['name'])){    
+  extract($_POST);  //Convert the string to the variable
+     $name=$_FILES['addhar_card']['name'];
+     $size=$_FILES['addhar_card']['size'];
+     $tmp=$_FILES['addhar_card']['tmp_name'];
+     $path="upload/";
+     $addhar_card=image($name,$size,$tmp,$path);
+
+     $name=$_FILES['pan_card']['name'];
+     $size=$_FILES['pan_card']['size'];
+     $tmp=$_FILES['pan_card']['tmp_name'];
+     $path="upload/";
+     $pan_card=image($name,$size,$tmp,$path);
+
+     $name=$_FILES['voter_card']['name'];
+     $size=$_FILES['voter_card']['size'];
+     $tmp=$_FILES['voter_card']['tmp_name'];
+     $path="upload/";
+     $voter_card=image($name,$size,$tmp,$path);
+
+   $query="INSERT INTO `customers_document`( `name`, `mobile`, `email`, `address`, `city`, `state`, `zip`, `addhar_card`, `pan_card`, `voter_card`) 
+   VALUES ('".$name."','".$mobile."','".$email."','".$address."','".$city."','".$state."','".$zip."','".$addhar_card."','".$pan_card."','".$voter_card."')";
+   $fire=mysqli_query($conn,$query);
+   if($fire){
+    echo "<script>alert('Succsess');window.location.href='index.php'</script>";
+   }
+   else{
+    echo "Error: ";
+   }
+
+}
+
+ ?>
+
+
+
 
 
 

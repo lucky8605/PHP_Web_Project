@@ -317,7 +317,7 @@ function image($name,$size,$temp,$path){
 }
 
 if(isset($_POST['f_title'])){    
-   extract($_POST);  //Convert the string to the variable
+   extract($_POST);  //Convert the string to the variable 
    
    if($_FILES['f_smallimg']['name']!=''){
       $name=$_FILES['f_smallimg']['name'];

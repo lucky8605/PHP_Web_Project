@@ -87,9 +87,6 @@ function image($name,$size,$temp,$path){
 }
 
 if(isset($_POST['team_name'])){
-	
-
-   
    if($_FILES['team_img']['name']!=""){
       $name=$_FILES['team_img']['name'];
       $size=$_FILES['team_img']['size'];
@@ -103,9 +100,8 @@ if(isset($_POST['team_name'])){
    else{
       $team_img=$_POST['team_img'];
    }   
-
-
-   $query="UPDATE team SET team_name='".$_POST['team_name']."',team_Position='".$_POST['team_Position']."',f_link='".$_POST['f_link']."',t_link='".$_POST['t_link']."',i_link='".$_POST['i_link']."',team_img='".$team_img."' WHERE team_id='".$_POST['team_id']."'";
+   $query="UPDATE team SET team_name='".$_POST['team_name']."',team_Position='".$_POST['team_Position']."',f_link='".$_POST['f_link']."',t_link='".$_POST['t_link']."',i_link='".$_POST['i_link']."',team_img='".$team_img."' 
+   WHERE team_id='".$_POST['team_id']."'";
 
 	$fire=mysqli_query($conn,$query);
   if($fire){
